@@ -25,7 +25,7 @@ function init() {
         name: "name",
       })
       .then((res) => {
-        const mgr = new TeamMember({ name: res.name });
+        const mgr = new TeamMember({ name: res.name, role: "Manager"});
         createFile(mgr);
       })
       .catch((err) => {

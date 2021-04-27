@@ -1,6 +1,8 @@
 
 
 function genHTML(body){
+    let htmlBody = genBody();
+    let card = genCard();
     return `<!DOCTYPE html>
     <html lang="en">
     <head>
@@ -12,18 +14,23 @@ function genHTML(body){
     </head>
     <body>
 
-        <p>Name:${body.name}</p>
+    <header>
+
+    <div class="container">
+        ${htmlBody}
+        ${card}
+    </div>
 
     </body>
     </html>`
 }
 
-function genBody(cards){
-    return `${cards}`
+function genBody(){
+    return `html body`
 }
 
-function genCard(data){
-
+function genCard(){
+    return `card`
 }
 
 module.exports = genHTML;
