@@ -5,7 +5,7 @@ class teamMember{
         this.email = email;
     }
 
-    getRole = function(){
+    getRole(){
         return this.role;
     }
 }
