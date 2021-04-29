@@ -28,8 +28,16 @@ class Engineer extends TeamMember{
     }
 }
 
+class Intern extends TeamMember{
+    constructor(params){
+        super(params)
+        this.school = params.school;
+        this.role = "intern";
+    }
+}
+
 module.exports = {
     manager: Manager,
     engineer: Engineer,
-
+    intern: Intern,
 }
