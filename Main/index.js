@@ -55,68 +55,72 @@ function init() {
 
   function createEngineer() {
     inquirer
-    .prompt([
-      {
-        type: "input",
-        message: "Enter the Engineers name",
-        name: "name",
-      },
-      {
-        type: "input",
-        message: "What is the ID?",
-        name: "id",
-      },
-      {
-        type: "input",
-        message: "What's their email?",
-        name: "email",
-      },
-      {
-        type: "input",
-        message: "What is the GitHub name",
-        name: "github",
-      },
-    ])
-    .then((res) => {
-      const eng = new TeamMembers.engineer({
-        name: res.name,
-        id: res.id,
-        email: res.email,
-        github: res.github,
-      });
-      teamMembers.push(eng);
-      idArray.push(eng.id);
-      createFile(teamMembers);
-    })
-    .catch((err) => {
-      console.log(err);
-    });
-  }
-
-  function next(){
-      inquirer.prompt([
-          {
-            type: 'list',
-            name: 'addMember',
-            message: "Add a team member",
-            choices: ["Engineer", "Intern"]
-          }
+      .prompt([
+        {
+          type: "input",
+          message: "Enter the Engineers name",
+          name: "name",
+        },
+        {
+          type: "input",
+          message: "What is the ID?",
+          name: "id",
+        },
+        {
+          type: "input",
+          message: "What's their email?",
+          name: "email",
+        },
+        {
+          type: "input",
+          message: "What is the GitHub name",
+          name: "github",
+        },
       ])
       .then((res) => {
-          switch(res.addMember){
-              case "Engineer":
-                  createEngineer();
-                  break;
-              case "Intern":
-                  createIntern();
-                  break;
-              default:
-                  return;
-          }
+        const eng = new TeamMembers.engineer({
+          name: res.name,
+          id: res.id,
+          email: res.email,
+          github: res.github,
+        });
+        teamMembers.push(eng);
+        idArray.push(eng.id);
+        next();
       })
       .catch((err) => {
-          console.log(err)
+        console.log(err);
+      });
+  }
+
+  function next() {
+    inquirer
+      .prompt([
+        {
+          type: "list",
+          name: "addMember",
+          message: "Add a team member",
+          choices: ["Engineer", "Intern", "Done"],
+        },
+      ])
+      .then((res) => {
+        switch (res.addMember) {
+          case "Engineer":
+            createEngineer();
+            break;
+          case "Intern":
+            createIntern();
+            break;
+          case "Done":
+            createFile(teamMembers);
+            break;
+          default:
+            return;
+        }
       })
+      .catch((err) => {
+        console.log(err);
+      });
   }
 
   function createFile(teamMembers) {

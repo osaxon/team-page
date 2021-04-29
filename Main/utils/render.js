@@ -1,8 +1,6 @@
 
 
 function genHTML(teamMembers){
-    let mgr = teamMembers.filter(member => (member.getRole() === "manager"));
-    mgr = mgr[0]
     const html = [];
     html.push(teamMembers.filter(member => member.getRole() === "manager").map(manager => manager.createCard()))
     html.push(teamMembers.filter(member => member.getRole() === "engineer").map(engineer => engineer.createCard()))
@@ -18,8 +16,8 @@ function genHTML(teamMembers){
     <body>
 
     <div class="container">
-    </div>
     ${html.join('')}
+    </div>
     </body>
     </html>`
 }

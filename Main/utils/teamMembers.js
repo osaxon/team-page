@@ -24,17 +24,17 @@ class Manager extends TeamMember{
     createCard = function(){
         return `
         <div class="col-sm-4 d-flex justify-content-center">   
-          <div class="card text-white bg-danger mb-3" style="width: 18rem;">
+          <div class="card text-white bg-light mb-3" style="width: 18rem;">
               <div class="card-body">
                 <h5 class="card-title" id="role">Manager</h5>
               </div>
               <ul class="list-group list-group-flush">
-              <li class="list-group-item text-dark" id="managerName">${this.name}</li>
-                <li class="list-group-item text-dark" id="managerId">${this.id}</li>
-                <li class="list-group-item text-dark" id="managerOffice">${this.office}</li>
+              <li class="list-group-item text-dark" id="name">${this.name}</li>
+                <li class="list-group-item text-dark" id="id">${this.id}</li>
+                <li class="list-group-item text-dark" id="office">${this.office}</li>
               </ul>
               <div class="card-body ">
-                <a href="#" class="card-link text-white" id="managerEmail">${this.email}</a>
+                <a href="#" class="card-link text-white" id="email">${this.email}</a>
               </div>
           </div>
         </div>`
@@ -51,14 +51,14 @@ class Engineer extends TeamMember{
     createCard = function(){
         return `
         <div class="col-sm-4 d-flex justify-content-center">   
-          <div class="card text-white bg-danger mb-3" style="width: 18rem;">
+          <div class="card text-white bg-light mb-3" style="width: 18rem;">
               <div class="card-body">
                 <h5 class="card-title" id="role">${this.role}</h5>
               </div>
               <ul class="list-group list-group-flush">
               <li class="list-group-item text-dark" id="name">${this.name}</li>
                 <li class="list-group-item text-dark" id="id">${this.id}</li>
-                <li class="list-group-item text-dark" id="engGithub">${this.github}</li>
+                <li class="list-group-item text-dark" id="github">${this.github}</li>
               </ul>
               <div class="card-body ">
                 <a href="#" class="card-link text-white" id="email">${this.email}</a>
