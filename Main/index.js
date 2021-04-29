@@ -26,7 +26,8 @@ function init() {
       })
       .then((res) => {
         const mgr = new TeamMember({ name: res.name, role: "Manager"});
-        createFile(mgr);
+        teamMembers.push(mgr);
+        idArray.push(mgr.id)
       })
       .catch((err) => {
         console.log(err);
