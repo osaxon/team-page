@@ -1,8 +1,10 @@
 
 
-function genHTML(body){
-    let htmlBody = genBody();
-    let card = genCard();
+function genHTML(teamMembers){
+    let mgr = teamMembers.filter(member => (member.getRole() === "manager"));
+    mgr = mgr[0]
+    const html = [];
+    html.push(teamMembers.filter(member => member.getRole() === "manager").map(manager => manager.createCard()))
     return `<!DOCTYPE html>
     <html lang="en">
     <head>
@@ -14,13 +16,9 @@ function genHTML(body){
     </head>
     <body>
 
-    <header>
-
     <div class="container">
-        ${htmlBody}
-        ${card}
     </div>
-
+    ${html.join('')}
     </body>
     </html>`
 }

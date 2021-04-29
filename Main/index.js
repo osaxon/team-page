@@ -46,7 +46,7 @@ function init() {
         });
         teamMembers.push(mgr);
         idArray.push(mgr.id);
-        next();
+        createFile(teamMembers);
       })
       .catch((err) => {
         console.log(err);
@@ -81,11 +81,11 @@ function init() {
       })
   }
 
-  function createFile(data) {
+  function createFile(teamMembers) {
     if (!fs.existsSync(OUTPUT_DIR)) {
       fs.mkdirSync(OUTPUT_DIR);
     }
-    fs.writeFileSync(outputPath, genHTML(data), "utf-8");
+    fs.writeFileSync(outputPath, genHTML(teamMembers), "utf-8");
   }
 
   createManager();

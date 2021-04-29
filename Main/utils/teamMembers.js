@@ -7,9 +7,11 @@ class TeamMember{
         //this.github = params.github;
     }
 
-    getRole(){
+    getRole = function (){
         return this.role;
     }
+
+    
 }
 
 class Manager extends TeamMember{
@@ -17,6 +19,25 @@ class Manager extends TeamMember{
         super(params)
         this.office = params.office;
         this.role = "manager";
+    }
+
+    createCard = function(){
+        return `
+        <div class="col-sm-4 d-flex justify-content-center">   
+          <div class="card text-white bg-danger mb-3" style="width: 18rem;">
+              <div class="card-body">
+                <h5 class="card-title" id="role">Manager</h5>
+              </div>
+              <ul class="list-group list-group-flush">
+              <li class="list-group-item text-dark" id="managerName">${this.name}</li>
+                <li class="list-group-item text-dark" id="managerId">${this.id}</li>
+                <li class="list-group-item text-dark" id="managerOffice">${this.office}</li>
+              </ul>
+              <div class="card-body ">
+                <a href="#" class="card-link text-white" id="managerEmail">${this.email}</a>
+              </div>
+          </div>
+        </div>`
     }
 }
 
