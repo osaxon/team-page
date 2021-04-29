@@ -3,7 +3,7 @@ const genHTML = require("./utils/render.js");
 const inquirer = require("inquirer");
 const path = require("path");
 const fs = require("fs");
-const TeamMember = require("./utils/teamMembers.js");
+const TeamMembers = require("./utils/teamMembers.js");
 
 const OUTPUT_DIR = path.resolve(__dirname, "output");
 const outputPath = path.join(OUTPUT_DIR, "team.html");
@@ -11,30 +11,50 @@ const outputPath = path.join(OUTPUT_DIR, "team.html");
 const teamMembers = [];
 const idArray = [];
 
-const manager = new TeamMember({ name: "oli", role: "Manager" });
-
-teamMembers.push(manager);
-console.log(teamMembers);
 
 function init() {
   function createManager() {
     inquirer
-      .prompt({
-        type: "input",
-        message: "Enter the Managers name",
-        name: "name",
-      })
+      .prompt([
+        {
+          type: "input",
+          message: "Enter the Managers name",
+          name: "name",
+        },
+        {
+          type: "input",
+          message: "What is the ID?",
+          name: "id",
+        },
+        {
+          type: "input",
+          message: "What's their email?",
+          name: "email",
+        },
+        {
+          type: "input",
+          message: "What is the office location number?",
+          name: "office",
+        },
+      ])
       .then((res) => {
-        const mgr = new TeamMember({ name: res.name, role: "Manager"});
+        const mgr = new TeamMembers.manager({
+          name: res.name,
+          id: res.id,
+          email: res.email,
+          office: res.office,
+        });
+        console.log(mgr)
+        console.log(mgr.getRole())
         teamMembers.push(mgr);
-        idArray.push(mgr.id)
+        idArray.push(mgr.id);
       })
       .catch((err) => {
         console.log(err);
       });
   }
 
-  createManager();
+  function createEngineer(role) {}
 
   function createFile(data) {
     if (!fs.existsSync(OUTPUT_DIR)) {
@@ -42,6 +62,8 @@ function init() {
     }
     fs.writeFileSync(outputPath, genHTML(data), "utf-8");
   }
+
+  createManager();
 }
 
 init();

@@ -4,8 +4,7 @@ class TeamMember{
         this.id = params.id;
         this.email = params.email;
         this.role = params.role;
-        this.github = params.github;
-        this.office = params.office;
+        //this.github = params.github;
     }
 
     getRole(){
@@ -13,4 +12,24 @@ class TeamMember{
     }
 }
 
-module.exports = TeamMember
+class Manager extends TeamMember{
+    constructor(params){
+        super(params)
+        this.office = params.office;
+        this.role = "manager";
+    }
+}
+
+class Engineer extends TeamMember{
+    constructor(params){
+        super(params)
+        this.github = params.github;
+        this.role = "engineer";
+    }
+}
+
+module.exports = {
+    manager: Manager,
+    engineer: Engineer,
+
+}
