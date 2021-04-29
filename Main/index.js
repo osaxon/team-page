@@ -11,8 +11,8 @@ const outputPath = path.join(OUTPUT_DIR, "team.html");
 const teamMembers = [];
 const idArray = [];
 
-
 function init() {
+  // Uses inquirer to get responses and creates an instance of the Manager object and pushes to array
   function createManager() {
     inquirer
       .prompt([
@@ -44,17 +44,42 @@ function init() {
           email: res.email,
           office: res.office,
         });
-        console.log(mgr)
-        console.log(mgr.getRole())
         teamMembers.push(mgr);
         idArray.push(mgr.id);
+        next();
       })
       .catch((err) => {
         console.log(err);
       });
   }
 
-  function createEngineer(role) {}
+  function createEngineer() {}
+
+  function next(){
+      inquirer.prompt([
+          {
+            type: 'list',
+            name: 'addMember',
+            message: "Add a team member",
+            choices: ["Engineer", "Intern"]
+          }
+      ])
+      .then((res) => {
+          switch(res.addMember){
+              case "Engineer":
+                  createEngineer();
+                  break;
+              case "Intern":
+                  createIntern();
+                  break;
+              default:
+                  return;
+          }
+      })
+      .catch((err) => {
+          console.log(err)
+      })
+  }
 
   function createFile(data) {
     if (!fs.existsSync(OUTPUT_DIR)) {
