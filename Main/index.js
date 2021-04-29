@@ -46,14 +46,52 @@ function init() {
         });
         teamMembers.push(mgr);
         idArray.push(mgr.id);
-        createFile(teamMembers);
+        next();
       })
       .catch((err) => {
         console.log(err);
       });
   }
 
-  function createEngineer() {}
+  function createEngineer() {
+    inquirer
+    .prompt([
+      {
+        type: "input",
+        message: "Enter the Engineers name",
+        name: "name",
+      },
+      {
+        type: "input",
+        message: "What is the ID?",
+        name: "id",
+      },
+      {
+        type: "input",
+        message: "What's their email?",
+        name: "email",
+      },
+      {
+        type: "input",
+        message: "What is the GitHub name",
+        name: "github",
+      },
+    ])
+    .then((res) => {
+      const eng = new TeamMembers.engineer({
+        name: res.name,
+        id: res.id,
+        email: res.email,
+        github: res.github,
+      });
+      teamMembers.push(eng);
+      idArray.push(eng.id);
+      createFile(teamMembers);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+  }
 
   function next(){
       inquirer.prompt([

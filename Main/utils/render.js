@@ -5,6 +5,7 @@ function genHTML(teamMembers){
     mgr = mgr[0]
     const html = [];
     html.push(teamMembers.filter(member => member.getRole() === "manager").map(manager => manager.createCard()))
+    html.push(teamMembers.filter(member => member.getRole() === "engineer").map(engineer => engineer.createCard()))
     return `<!DOCTYPE html>
     <html lang="en">
     <head>
@@ -23,12 +24,5 @@ function genHTML(teamMembers){
     </html>`
 }
 
-function genBody(){
-    return `html body`
-}
-
-function genCard(){
-    return `card`
-}
 
 module.exports = genHTML;
