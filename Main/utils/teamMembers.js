@@ -26,15 +26,15 @@ class Manager extends TeamMember{
         <div class="col-sm-4 d-flex justify-content-center">   
           <div class="card mb-3" style="width: 18rem;">
               <div class="card-body">
-                <h5 class="card-title" id="role">${this.role}</h5>
+                <h5 class="card-title" id="role"><i class="fas fa-briefcase"></i>${this.role}</h5>
               </div>
               <ul class="list-group list-group-flush">
-              <li class="list-group-item text-dark" id="name">${this.name}</li>
-                <li class="list-group-item text-dark" id="id">${this.id}</li>
-                <li class="list-group-item text-dark" id="office">${this.office}</li>
+              <li class="list-group-item text-dark" id="name">Name: ${this.name}</li>
+                <li class="list-group-item text-dark" id="id">ID: ${this.id}</li>
+                <li class="list-group-item text-dark" id="office">Office: ${this.office}</li>
               </ul>
               <div class="card-body ">
-                <a href="#" class="card-link text-white" id="email">${this.email}</a>
+                <a href="mailto:${this.email}" class="card-link" id="email">Email: ${this.email}</a>
               </div>
           </div>
         </div>`
@@ -53,15 +53,15 @@ class Engineer extends TeamMember{
         <div class="col-sm-4 d-flex justify-content-center">   
           <div class="card mb-3" style="width: 18rem;">
               <div class="card-body">
-                <h5 class="card-title" id="role">${this.role}</h5>
+                <h5 class="card-title" id="role"><i class="fas fa-tools"></i>${this.role}</h5>
               </div>
               <ul class="list-group list-group-flush">
-              <li class="list-group-item text-dark" id="name">${this.name}</li>
-                <li class="list-group-item text-dark" id="id">${this.id}</li>
-                <li class="list-group-item text-dark" id="github">${this.github}</li>
+              <li class="list-group-item text-dark" id="name">Name: ${this.name}</li>
+                <li class="list-group-item text-dark" id="id">ID: ${this.id}</li>
+                <a href="#https://github.com/${this.github}" class="card-link" id="github">GitHub: ${this.github}</a>
               </ul>
               <div class="card-body ">
-                <a href="#" class="card-link text-white" id="email">${this.email}</a>
+                <a href="mailto:${this.email}" class="card-link" id="email">Email: ${this.email}</a>
               </div>
           </div>
         </div>`
@@ -80,15 +80,15 @@ class Intern extends TeamMember{
         <div class="col-sm-4 d-flex justify-content-center">   
           <div class="card mb-3" style="width: 18rem;">
               <div class="card-body">
-                <h5 class="card-title" id="role">${this.role}</h5>
+                <h5 class="card-title" id="role"><i class="fas fa-graduation-cap"></i>${this.role}</h5>
               </div>
               <ul class="list-group list-group-flush">
-              <li class="list-group-item text-dark" id="name">${this.name}</li>
-                <li class="list-group-item text-dark" id="id">${this.id}</li>
-                <li class="list-group-item text-dark" id="school">${this.school}</li>
+              <li class="list-group-item text-dark" id="name">Name: ${this.name}</li>
+                <li class="list-group-item text-dark" id="id">ID: ${this.id}</li>
+                <li class="list-group-item text-dark" id="school">School: ${this.school}</li>
               </ul>
               <div class="card-body ">
-                <a href="#" class="card-link text-white" id="email">${this.email}</a>
+                <a href="mailto:${this.email}" class="card-link" id="email">Email: ${this.email}</a>
               </div>
           </div>
         </div>`
