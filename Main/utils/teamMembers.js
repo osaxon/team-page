@@ -24,9 +24,9 @@ class Manager extends TeamMember{
     createCard = function(){
         return `
         <div class="col-sm-4 d-flex justify-content-center">   
-          <div class="card text-white bg-light mb-3" style="width: 18rem;">
+          <div class="card mb-3" style="width: 18rem;">
               <div class="card-body">
-                <h5 class="card-title" id="role">Manager</h5>
+                <h5 class="card-title" id="role">${this.role}</h5>
               </div>
               <ul class="list-group list-group-flush">
               <li class="list-group-item text-dark" id="name">${this.name}</li>
@@ -51,7 +51,7 @@ class Engineer extends TeamMember{
     createCard = function(){
         return `
         <div class="col-sm-4 d-flex justify-content-center">   
-          <div class="card text-white bg-light mb-3" style="width: 18rem;">
+          <div class="card mb-3" style="width: 18rem;">
               <div class="card-body">
                 <h5 class="card-title" id="role">${this.role}</h5>
               </div>
@@ -73,6 +73,25 @@ class Intern extends TeamMember{
         super(params)
         this.school = params.school;
         this.role = "intern";
+    }
+
+    createCard(){
+        return `
+        <div class="col-sm-4 d-flex justify-content-center">   
+          <div class="card mb-3" style="width: 18rem;">
+              <div class="card-body">
+                <h5 class="card-title" id="role">${this.role}</h5>
+              </div>
+              <ul class="list-group list-group-flush">
+              <li class="list-group-item text-dark" id="name">${this.name}</li>
+                <li class="list-group-item text-dark" id="id">${this.id}</li>
+                <li class="list-group-item text-dark" id="school">${this.school}</li>
+              </ul>
+              <div class="card-body ">
+                <a href="#" class="card-link text-white" id="email">${this.email}</a>
+              </div>
+          </div>
+        </div>`
     }
 }
 

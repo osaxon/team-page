@@ -9,7 +9,6 @@ const OUTPUT_DIR = path.resolve(__dirname, "output");
 const outputPath = path.join(OUTPUT_DIR, "team.html");
 
 const teamMembers = [];
-const idArray = [];
 
 function init() {
   // Uses inquirer to get responses and creates an instance of the Manager object and pushes to array
@@ -45,7 +44,6 @@ function init() {
           office: res.office,
         });
         teamMembers.push(mgr);
-        idArray.push(mgr.id);
         next();
       })
       .catch((err) => {
@@ -85,12 +83,47 @@ function init() {
           github: res.github,
         });
         teamMembers.push(eng);
-        idArray.push(eng.id);
         next();
       })
       .catch((err) => {
         console.log(err);
       });
+  }
+
+  function createIntern(){
+    inquirer
+    .prompt([
+      {
+        type: "input",
+        message: "Enter the Interns name",
+        name: "name",
+      },
+      {
+        type: "input",
+        message: "What is the ID?",
+        name: "id",
+      },
+      {
+        type: "input",
+        message: "What's their email?",
+        name: "email",
+      },
+      {
+        type: "input",
+        message: "What school did they attend",
+        name: "school",
+      },
+    ])
+    .then((res) => {
+        const int = new TeamMembers.intern({
+            name: res.name,
+            id: res.id,
+            email: res.email,
+            school: res.school,
+        });
+        teamMembers.push(int);
+        next();
+    })
   }
 
   function next() {
@@ -115,7 +148,8 @@ function init() {
             createFile(teamMembers);
             break;
           default:
-            return;
+            createFile(teamMembers);
+            break;
         }
       })
       .catch((err) => {

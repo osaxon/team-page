@@ -2,8 +2,9 @@
 
 function genHTML(teamMembers){
     const html = [];
+    // generate html using object method and push to array. store manager first
     html.push(teamMembers.filter(member => member.getRole() === "manager").map(manager => manager.createCard()))
-    html.push(teamMembers.filter(member => member.getRole() === "engineer").map(engineer => engineer.createCard()))
+    html.push(teamMembers.filter(member => member.getRole() === "engineer" || member.getRole() === "intern").map(engineer => engineer.createCard()))
     return `<!DOCTYPE html>
     <html lang="en">
     <head>
